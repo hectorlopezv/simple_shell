@@ -12,11 +12,9 @@ int _loop(info_t *info)
 	{
 		signal(SIGINT, _signals);
 		_get_prompt(info);
-		if (!info->line)
-		{
-			info->error_status = 1;
-			_error(info);
-		}
+		if (info->line == NULL)
+			continue;
+
 		if (info->line[0] == '\n')
 		{
 			fflush(stdin);
@@ -33,8 +31,7 @@ int _loop(info_t *info)
 		if (info->tokenized[0] != 0)
 			_builtin(info);
 		info->arguments_count += 1;
-		info->execution = _fork(info);
-		if (info->execution == -1)
+		if (_fork(info) == -1)
 		{
 			info->error_status = 1;
 			_error(info);
@@ -45,4 +42,3 @@ int _loop(info_t *info)
 	}
 	return (status);
 }
-

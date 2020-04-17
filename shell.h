@@ -57,12 +57,16 @@ typedef struct Information
 /* Shell functions */
 void _signals(int signal);
 void _free(info_t *info);
+void _is_executable(info_t *info);
+void _clean_up(info_t *info, int selector);
 char **_tokenizer(info_t *info);
 char *_get_prompt(info_t *info);
 char *_which(info_t *info);
 char *_check_cwd(char*, info_t *info);
 int _stat(const char *path);
 int _loop(info_t *info);
+int _isspace(int c);
+int _is_empty(const char *s);
 int _builtin(info_t *info);
 int _fork(info_t *info);
 int _exec(info_t *info);
@@ -74,6 +78,7 @@ char *_strcpy(char *destination, const char *source);
 char *_strcat(char *str1, const char *str2);
 char *_getenv(const char *name);
 char *_convert(long int num, int base);
+char *_strdup(char *str);
 int _strncmp(char *s1, const char *s2, int size);
 int _strcmp(char *s1, char *s2);
 #endif
