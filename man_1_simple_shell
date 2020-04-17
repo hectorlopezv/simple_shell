@@ -1,0 +1,64 @@
+
+.Dd 09/04/2020 
+.Dt simple-shell(1) "" Shell-Manual
+.Sh Simple - Shell             \" Program name and manual section number          \" Section Header - required - don't modifyugust 25, 2017
+
+Simple-Shell is a command line interpreter such as ./sh, similary to sh it is possible
+to execute binaries, and some basic builtins such as exit, cd, env, pwd, setenv.
+does not support the use of pipes and I/O redirection.
+
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+Command [Arguments]... [FILE]...
+
+
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+It tokenizes the input from the terminal into arguments that are passed As a input for 
+a certain command, that is searched  in the PATH and Actual directory. a  first file that is an executable and has the permisions For being executed into a new process is going to be the one to be Chosen.
+when and error ocurrs a message is displayed in the stderror Stream using perror function , in addition it supports
+signal handling for SIGINT signal and EOF.
+
+.Sh BUILT-IN COMMANDS
+.Nm exit -
+exit the current process
+.Pp 
+.Nm env - print the curret enviroment variables to stdout
+.Pp
+.Nm cd - change current working directory
+.Pp
+.Nm setenv - change current enviroment variable or create a new one
+.Pp 
+.Nm echo -
+prints to stdout
+
+.Sh Example Usage
+- ls - l
+.Pp
+ - pwd
+.Pp
+ - cd
+.Pp
+ - exit
+.Sh Limitations / To improve
+.Nm - pipes
+.Pp
+.Nm - Redirection
+.Pp 
+.Nm - aliases
+.Pp 
+.Nm - history
+.Pp 
+.Nm - Bitwise operations
+.Pp 
+.Nm - limited to input of 4096 bytes from stdin
+
+.Sh SEE ALSO
+.\" List links in ascending order by section, alphabetically within a section.
+.\" Please do not reference files that do not exist without filing a bug report
+.Xr sh 1 ,
+.Xr bash 1
+.Sh AUTHOR
+.Br
+Written by Samuel Gomez, Hector Lopez
+
+
+
