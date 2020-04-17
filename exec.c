@@ -9,11 +9,9 @@
 int _exec(char **arguments, char **command, int counter)
 {
 	if (execve(command[1], arguments, environ) == -1)
-  {
-    printf("HECTO222R\n");
-    perror("bebe");
+	{
 		_error(arguments, command, 1, counter);
-  }
+	}
 	return (0);
 }
 

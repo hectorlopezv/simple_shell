@@ -26,11 +26,11 @@ int _error(char **arguments, char **command, int error, int count)
 		{
 			write(STDERR_FILENO, command[0], _strlen(command[0]) - 1);
 			write(STDERR_FILENO, ": ", 2);
-			write(STDERR_FILENO, count_char, _strlen(count_char - 1));
+			write(STDERR_FILENO, count_char, _strlen(count_char)- 1);
 			write(STDERR_FILENO, ": ", 2);
 			write(STDERR_FILENO, arguments[0], _strlen(arguments[0]) - 1);
 			write(STDERR_FILENO, errors[i].msg, _strlen(errors[i].msg) - 1);
-				write(STDERR_FILENO, "\n", 1);
+			write(STDERR_FILENO, "\n", 1);
 
 			return (errors[i].status);
 		}
@@ -44,18 +44,18 @@ int _error(char **arguments, char **command, int error, int count)
 }
 
 /**
-* struct information - struct containing all information for the shell
-*@program_status: status for iterative or non iterative
-*@arguments_to_be_freed: malloc arguments to be free
-*@arguments_count: number of line in the shell
-*@execution: return int for fork()
-*@error_status: error status for child process
-*@line: input line by the user
-*@command: command to execute
-*@tokenized: parsed line input
-*@arguments: arguments for execve 
-*Description: struct containing all information for the shell
-*/
+ * struct information - struct containing all information for the shell
+ *@program_status: status for iterative or non iterative
+ *@arguments_to_be_freed: malloc arguments to be free
+ *@arguments_count: number of line in the shell
+ *@execution: return int for fork()
+ *@error_status: error status for child process
+ *@line: input line by the user
+ *@command: command to execute
+ *@tokenized: parsed line input
+ *@arguments: arguments for execve
+ *Description: struct containing all information for the shell
+ */
 
 typedef struct Information
 {

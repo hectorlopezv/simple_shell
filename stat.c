@@ -12,7 +12,6 @@ int _stat(const char *filename)
 			&& (st.st_mode & S_IXUSR)
 			&& (S_ISREG(st.st_mode)))
 	{
-    printf("aqui bebe\n");
 		return (0);
 	}
 

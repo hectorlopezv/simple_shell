@@ -11,7 +11,7 @@ int _fork(char **arguments, char **command, int ac, int count)
 {
 	pid_t c_pid, pid;
 	int status;
-  
+
 	c_pid = fork();
 
 	if (c_pid == 0)
@@ -22,7 +22,6 @@ int _fork(char **arguments, char **command, int ac, int count)
 		{
 			_exec(arguments, command, count);
 		}
-    printf("HECTOR\n");
 		_error(arguments, command, 1, count);
 		_free(arguments, ac);
 		exit(EXIT_FAILURE);
