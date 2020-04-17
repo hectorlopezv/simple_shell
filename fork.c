@@ -9,12 +9,13 @@ int _fork(info_t *info)
 	int status;
 	pid_t c_pid, pid;
 
-	info->command = _which(info);
-	if (info->command)
+	_is_executable(info);
+	if (info->execution == 1)
 	{
 		c_pid = fork();
 		if (c_pid == 0)
 		{
+			info->command = _which(info);
 			if (info->command != NULL)
 			{
 				if (_exec(info) == -1)
