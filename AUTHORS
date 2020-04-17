@@ -1,5 +1,0 @@
-s file lists all individuals having contributed content to the repository.
-# For how it is generated, see `hack/generate-authors.sh`.
-
-Samuel Gomez <1727@holbertonschool.com.com>
-Hector Lopez <1664@holbertonschool.com.com>
