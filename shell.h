@@ -58,7 +58,7 @@ typedef struct Information
 void _signals(int signal);
 void _free(info_t *info);
 void _is_executable(info_t *info);
-void _clean_up (info_t *info, int selector);
+void _clean_up(info_t *info, int selector);
 char **_tokenizer(info_t *info);
 char *_get_prompt(info_t *info);
 char *_which(info_t *info);

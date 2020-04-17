@@ -11,16 +11,14 @@ int _fork(info_t *info)
 
 	_is_executable(info);
 	if (info->execution == 1)
-	{
-		c_pid = fork();
+	{	c_pid = fork();
 		if (c_pid == 0)
 		{
 			info->command = _which(info);
 			if (info->command != NULL)
 			{
 				if (_exec(info) == -1)
-				{
-					info->error_status = 126;
+				{	info->error_status = 126;
 					status = info->error_status;
 					_clean_up(info, 1);
 					exit(status);
@@ -32,8 +30,7 @@ int _fork(info_t *info)
 			exit(status);
 		}
 		else if (c_pid > 0)
-		{
-			pid = wait(&status);
+		{	pid = wait(&status);
 			if (pid < 0)
 				exit(EXIT_FAILURE);
 			if (WIFEXITED(status))

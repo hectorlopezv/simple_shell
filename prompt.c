@@ -39,7 +39,7 @@ char *_get_prompt(info_t *info)
 		status = info->error_status;
 		if (isatty(STDIN_FILENO) == 0)
 			write(1, "\n", 1);
-		return(info->line);
+		return (info->line);
 	}
 	return (info->line);
 }
