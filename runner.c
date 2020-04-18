@@ -1,11 +1,11 @@
 #include "shell.h"
 
-int main (int ac, char **argv)
+int main (__attribute__((unused)) int ac, char **argv)
 {
 	int c_number, status;
 	char *buffer_line;
 	size_t n_bytes_line;
-	char **collection_string, *c_number_char, *path, *check_path;
+	char **collection_string, *c_number_char, *path;
 	int path_slash;
 
 	path_slash = 0;
@@ -102,8 +102,8 @@ void _prompt(void)
 {
 	write(STDIN_FILENO, "$ ", 2);
 }
-;
-void sig_handler(int num)
+
+void sig_handler(__attribute__((unused))int num)
 {
 
 	write(1, "\n", 1);
@@ -378,7 +378,7 @@ char *ft_strdup(char *src)
 char *_strcpy(char *dest, char* src)
 {
 	char *ret = dest;
-	while (*dest++ = *src++)
+	while ((*dest++ = *src++))
 		;
 	return ret;
 }
@@ -388,7 +388,7 @@ char *_strcat(char *dest,  char *src)
 	char *ret = dest;
 	while (*dest)
 		dest++;
-	while (*dest++ = *src++)
+	while ((*dest++ = *src++))
 		;
 	return ret;
 }
