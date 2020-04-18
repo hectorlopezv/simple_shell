@@ -10,6 +10,7 @@ char *_getenv(char *name)
 
 	size_t  i;
 	char *p;
+
 	if (environ != NULL)
 	{
 		for (i = 0; environ[i] != NULL; i++)

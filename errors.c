@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ *error_shell - error_shell for exit status
+ *@c_number: number of words
+ *@argv: number of arguments passed CL
+ *@colection_string: commands
+ *Return: return the error status
+ */
 int error_shell(int c_number, char **argv, char **colection_string)
 {
 	char *c_number_char;

@@ -21,9 +21,11 @@ void _free(char **parsed_buffer)
  *@builtIn: built in to look
  *@buffer_line: buffer_line to free
  *@collection_string: array of commands
+ *@status: error status
  *Return: return -1 if failt
  */
-int _builtin(char *builtIn, char **buffer_line, char ***collection_string, int status)
+int _builtin(char *builtIn, char **buffer_line, char ***collection_string,
+		int status)
 {
 	int i;
 

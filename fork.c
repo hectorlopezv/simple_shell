@@ -11,6 +11,7 @@ int _fork(char **path, char ***commands)
 {
 	int status;
 	pid_t c_pid, pid;
+
 	c_pid = fork();
 	if (c_pid == 0)/*child*/
 	{

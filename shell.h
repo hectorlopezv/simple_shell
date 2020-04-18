@@ -61,6 +61,7 @@ char *_convert(long int num, int base);
 /*validation*/
 int _stat_dir(const char *filename);
 int _stat(const char *filename);
-
+char *chech_cwd_exit(char **);
+int check_for_built_in(char ***collection, char **buffer_line, int status);
 
 #endif
