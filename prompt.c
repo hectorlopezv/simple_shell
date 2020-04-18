@@ -22,15 +22,13 @@ char *_get_prompt(info_t *info)
 
 
 	if (getline(&info->line, &bufsize, stdin) == EOF)
-
-
-
 	{
 		free(info->line);
 		status = info->error_status;
 		if (isatty(STDIN_FILENO) == 1)
 			write(1, "\n", 1);
 		free(info);
+    
 		exit(status);
 	}
 

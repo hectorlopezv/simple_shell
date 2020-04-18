@@ -60,36 +60,22 @@ char *_convert(long int num, int base)
  **/
 char *_strdup(char *str)
 {
-	int i, j;
-	char *C;
+	int size, i;
+	char *dest;
 
 	if (str == NULL)
-	{
-		return (NULL);
-	}
-
-
-	for (j = 0; str[j] != '\0'; j++)
-	{
-
-	}
-
-	C = (char *) malloc(j + 1);
-
-	if (C == NULL)
-	{
 		return (NULL);
 
-	}
+	size = _strlen(str) - 1;
+	dest = malloc(size * sizeof(char));
+	if (dest == NULL)
+		return (NULL);
 
-	for (i = 0; i < j; i++)
-	{
-		C[i] = str[i];
-	}
+	for (i = 0; i < size; i++)
+		dest[i] = str[i];
+  dest[i] = 0;
 
-	C[i] = str[i];
 
-	return (C);
+	return (dest);
 }
-
 

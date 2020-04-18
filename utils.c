@@ -13,7 +13,7 @@ size_t _strlen(const char *str)
 	while (*str++)
 		length++;
 
-	return (length + 1);
+	return (length + 1);/*count null character*/
 }
 /**
  * _strcat - concatenates two strings
@@ -23,13 +23,20 @@ size_t _strlen(const char *str)
  */
 char *_strcat(char *dest, const char *src)
 {
-	size_t i, j;
+	int i, j;
 
 	for (i = 0; dest[i] != '\0'; i++)
-		;
-	for (j = 0; src[j] != '\0'; j++)
-		dest[i + j] = src[j];
-	dest[i + j] = '\0';
+  {
+
+  }/*da el valor en nullo*/
+
+  for (j = 0; src[j] != '\0'; j++)
+  {
+    dest[i + j] = src[j];
+
+  }/*da el valor en nullo*/
+  dest[i + j] = src[j];
+
 	return (dest);
 }
 
@@ -65,17 +72,13 @@ char *_strcpy(char *dest, const char *src)
  * Return: negative int if s1 < s2, 0 if matching, and positive int if s1 > s2
  */
 
-int _strncmp(char *s1, const char *s2, int size)
-{
-	int i = 0;
 
-	for (i = 0; i < size; i++)
-	{
-		if (s1[i] != s2[i])
-		{
-			return (s1[i] - s2[i]);
-		}
-	}
-	return (0);
+int _strncmp(const char* s1, const char* s2, int n)
+{
+    while(n--)
+        if(*s1++!=*s2++)
+            return *(unsigned char*)(s1 - 1) - *(unsigned char*)(s2 - 1);
+    return 0;
 }
+
 

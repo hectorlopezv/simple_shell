@@ -50,7 +50,7 @@ typedef struct Information
 	int execution;
 	char *line;
 	char *command;
-	char **tokenized;
+	char **tokenized;/*malloc*/
 	char **arguments;
 } info_t;
 
@@ -79,6 +79,6 @@ char *_strcat(char *str1, const char *str2);
 char *_getenv(const char *name);
 char *_convert(long int num, int base);
 char *_strdup(char *str);
-int _strncmp(char *s1, const char *s2, int size);
+int _strncmp(const char *s1, const char *s2, int size);
 int _strcmp(char *s1, char *s2);
 #endif
