@@ -55,14 +55,15 @@ char *chech_cwd_exit(char **colection_string)
  */
 
 int check_for_built_in(char ***collection_string, char **buffer_line,
-		int status)
+		int *status, char **argv, int c_number)
 {
+
 	int built_flag;
 
 	if (collection_string[0] != NULL && collection_string != NULL)
 	{
 		built_flag = _builtin(*collection_string[0], buffer_line,
-				collection_string, status);
+				collection_string, status, argv, c_number);
 		if (built_flag == -1)
 			return (-1);/* not found*/
 	}

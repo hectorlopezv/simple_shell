@@ -25,18 +25,34 @@ void _free(char **parsed_buffer)
  *Return: return -1 if failt
  */
 int _builtin(char *builtIn, char **buffer_line, char ***collection_string,
-		int status)
+		int * status, char ** argv, int c_number)
 {
 	int i;
+	char *target;
 
 	if (_strcmp(builtIn, "exit") == 0)
 	{
 		if ((*collection_string)[1] != NULL)
-			status = _atoi((*collection_string)[1]);
+		{
+			target = (*collection_string)[1];
+			for (i = 0; target[i] != 0; i++)
+			{
+				if (target[i] < '0' || target[i] > '9')
+				{
+					*status = error_shell(c_number, argv, *collection_string, 2);
+					_free_2(collection_string, buffer_line);
+					return (0);
+				}
+			}
+			*status = _atoi((*collection_string)[1]);
+			_free_2(collection_string, buffer_line);
+			exit(*status);
 
+		}
 		_free_2(collection_string, buffer_line);
-		exit(status);
+		exit(*status);
 	}
+
 	if (_strcmp(builtIn, "env") == 0)
 	{
 		for (i = 0; environ[i] != NULL; i++)

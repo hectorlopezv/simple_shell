@@ -15,7 +15,7 @@ extern char **environ;
 
 /*erros*/
 
-int error_shell(int c_number, char **argv, char **colection_string);
+int error_shell(int c_number, char **argv, char **colection_string, int status);
 
 /*parsing*/
 char **_tokenizer(char *buffer_line);
@@ -43,7 +43,7 @@ int _fork(char **path, char ***commands);
 int _isspace(int c);
 int _is_empty(const char *s);
 void _free(char **parsed_buffer);
-int _builtin(char *builtIn, char **, char ***, int);
+int _builtin(char *builtIn, char **, char ***, int *, char ** , int);
 void _free_2(char ***parsed_buffer, char **path);
 
 /*string_utils*/
@@ -62,8 +62,8 @@ char *_convert(long int num, int base);
 int _stat_dir(const char *filename);
 int _stat(const char *filename);
 char *chech_cwd_exit(char **);
-int check_for_built_in(char ***collection, char **buffer_line, int status);
+int check_for_built_in(char ***collection, char **buffer_line, int *status, 
+		char ** argv, int c_number);
 int _atoi(char *s);
-
 
 #endif
