@@ -59,7 +59,8 @@ void _clean_up(info_t *info, int selector)
 	if (selector == 1)
 	{
 		_error(info);
-		free(info);
+		_free(info);
+	free(info);
 	}
 	_error(info);
 	_free(info);
