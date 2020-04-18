@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ *_convert - convert int to string
+ *@num: number to convert
+ *@base: base of the number
+ *Return: return
+ */
 char *_convert(long int num, int base)
 {
 	static char *array;
@@ -26,13 +32,18 @@ char *_convert(long int num, int base)
 	return (ptr);
 }
 
+/**
+ *_strlen - legth of a string
+ *@buffer: buffer
+ *Return: return legth of a string
+ */
 int _strlen(char *buffer)
 {
 	int i;
 
-	for(i = 0; buffer[i] != 0; i++)
+	for (i = 0; buffer[i] != 0; i++)
 	{
 
 	}
-	return(i);/* '\0' lo tiene en cuenta*/
+	return (i);/* '\0' lo tiene en cuenta*/
 }

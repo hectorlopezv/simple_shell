@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ *_fork - fork
+ *@path: bin/ls
+ *@commands: ["ls","-l","NULL"]
+ *Return: return status error from child
+ */
+
 int _fork(char *path, char **commands)
 {
 	int status;
@@ -8,7 +15,7 @@ int _fork(char *path, char **commands)
 	c_pid = fork();
 	if (c_pid == 0)/*child*/
 	{
-		if (execve(path, commands , environ) == -1)
+		if (execve(path, commands, environ) == -1)
 		{
 			free(path);
 			free(commands);
@@ -26,9 +33,10 @@ int _fork(char *path, char **commands)
 			status = WEXITSTATUS(status);
 		return (status);
 	}
-	else{
+	else
+	{
 
 		exit(EXIT_FAILURE);
 	}
-	return(-1);/*error on fork look errno*/
+	return (-1);/*error on fork look errno*/
 }

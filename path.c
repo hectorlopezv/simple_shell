@@ -1,5 +1,11 @@
 #include "shell.h"
-
+/**
+ *set_path_mod - fill copy of mod path
+ *@path_mod: mod path
+ *@path_dup: path duplicate
+ *@largo_prueba: length of command
+ *Return: return a modified path_mod
+ */
 void set_path_mod(char **path_mod, char *path_dup, int largo_prueba)
 {
 	int i, j;
@@ -32,12 +38,13 @@ void set_path_mod(char **path_mod, char *path_dup, int largo_prueba)
 }
 
 /**
- *  *  *tokenizer_path_mod - tokenized path_mod
- *   *   *@path_mod: path_modified
- *    *    *@size: size of the command
- *     *     *@command: command  inputed
- *      *      *Return: return the path_mod fill
- *       *       */
+ *tokenizer_path_mod - tokenized path_mod
+ *@path_mod: path_modified
+ *@size: size of the command
+ *@command: command  inputed
+ *Return: return the path_mod fill
+ */
+
 char *tokenizer_path_mod(char **path_mod, int size, char **command)
 {
 	char *path_pointer, *aux;
@@ -55,7 +62,7 @@ char *tokenizer_path_mod(char **path_mod, int size, char **command)
 		if (_stat(aux) == 0)
 			return (aux);/*RETORNA MALLOC*/
 
-		path_pointer = strtok(NULL,TOKEN_DELIMITERS);
+		path_pointer = strtok(NULL, TOKEN_DELIMITERS);
 		free(aux);
 	}
 	return (NULL);
@@ -63,13 +70,13 @@ char *tokenizer_path_mod(char **path_mod, int size, char **command)
 }
 
 /**
- *  *  *count_for_cwd- fill path in the path_modifief
- *   *   *@path_dup: duplicated path
- *    *    *@n_dir: number of dir
- *     *     *@i: i
- *      *      *@largo_prueba: largo of the path
- *       *       *Return: return the number of dir
- *        *        */
+ *count_for_cwd- fill path in the path_modifief
+ *@path_dup: duplicated path
+ *@n_dir: number of dir
+ *@i: i
+ *@largo_prueba: largo of the path
+ *Return: return the number of dir
+ */
 void count_for_cwd(char *path_dup, int *n_dir, int *i, int largo_prueba)
 {
 	/*count*/
@@ -96,10 +103,10 @@ void count_for_cwd(char *path_dup, int *n_dir, int *i, int largo_prueba)
 
 
 /**
- *  *  * _check_cwd - Check current folder
- *   *   * @command: Command received
- *    * Return: pointer string with found path or NULL in failure.
- *     *     */
+ *_check_cwd - Check current folder
+ *@command: Command received
+ *Return: pointer string with found path or NULL in failure.
+ */
 char *_check_cwd(char **command)
 {
 	if (_stat_dir(command[0]) == 0)/*if is in cwd and its a dir and read*/
@@ -116,7 +123,12 @@ char *_check_cwd(char **command)
 	return (NULL);
 }
 
-
+/**
+ *_check_empty_path - check if path is empty
+ *@path: path to compare
+ *@command: command to look
+ *Return: NUll if not in cwd othervise path to file
+ */
 char *_check_empty_path(char *path, char **command)
 {
 	if (_strcmp(path, "PATH=") == 0)

@@ -44,11 +44,11 @@ int _builtin(char *builtIn, char *, char **);
 
 
 /*string_utils*/
-char *_strcpy(char *dest, char* src);
+char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest,  char *src);
 char *ft_strdup(char *src);
-int _strncmp(char* s1, char* s2, size_t n);
-int _strcmp(char* s1, char* s2);
+int _strncmp(char *s1, char *s2, size_t n);
+int _strcmp(char *s1, char *s2);
 
 
 /*string_utils_2*/

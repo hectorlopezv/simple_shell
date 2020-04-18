@@ -1,10 +1,17 @@
 #include "shell.h"
 
+/**
+ *_stat - check if dir and if posible to read
+ *@filename: filename to verify status.
+ *Return: 1 on sucess, 0 on failure.
+ */
+
 int _stat(const char *filename)
 {
 	struct stat st;
 
-	if (stat(filename, &st) == 0 && (st.st_mode & S_IXUSR) && (S_ISREG(st.st_mode)))
+	if (stat(filename, &st) == 0 && (st.st_mode & S_IXUSR)
+			&& (S_ISREG(st.st_mode)))
 	{
 		return (0);
 	}
@@ -19,7 +26,9 @@ int _stat(const char *filename)
 int _stat_dir(const char *filename)
 {
 	struct stat st;
-	if(stat(filename,&st) ==0 && (S_ISDIR(st.st_mode)) && (st.st_mode & S_IRUSR))
+
+	if (stat(filename, &st) == 0 && (S_ISDIR(st.st_mode))
+			&& (st.st_mode & S_IRUSR))
 	{
 		return (0);
 	}
