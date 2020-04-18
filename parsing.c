@@ -30,13 +30,12 @@ char *_which(char **collection_string)
 
 	int c_number, largo_prueba, size, n_dir;
 	char *path, *check_path, *path_dup, *path_mod, *path_mod_tmp;
-
 	n_dir = 0, c_number = 0;
 	path_mod = malloc(1), path_dup = malloc(1);
 	check_path = NULL;
 	size = _strlen(collection_string[0]);
 	path = _getenv("PATH");
-	if (path == NULL)
+	if (path != NULL)/* PATH= case empty*/
 	{
 		check_path = _check_empty_path(path, collection_string);
 		if (check_path != NULL)
@@ -46,15 +45,16 @@ char *_which(char **collection_string)
 			return (ft_strdup(check_path));/*malloc*/
 		}
 	}
-	if (_strcmp(path, "PATH=") == 0)
+	if (path == NULL)
 	{
-		check_path = _check_empty_path(path, collection_string);
+		free(path_dup), free(path_mod);
+		path_dup = NULL, path_mod = NULL;
+		check_path = _check_cwd(collection_string);
 		if (check_path != NULL)
 		{
-			free(path_dup), free(path_mod);
-			path_dup = NULL, path_mod = NULL;
-			return (ft_strdup(check_path));/*malloc*/
+			return (ft_strdup(check_path));
 		}
+		return (NULL);
 	}
 	free(path_dup), free(path_mod);
 	path_dup = ft_strdup(path);/*malloc*/

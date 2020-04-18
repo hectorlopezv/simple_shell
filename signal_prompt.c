@@ -10,16 +10,20 @@ char *_getenv(char *name)
 
 	size_t  i;
 	char *p;
-
-	for (i = 0; environ[i] != NULL; i++)
+	if (environ != NULL)
 	{
-		if (_strncmp(environ[i], name, 4) == 0)
+		for (i = 0; environ[i] != NULL; i++)
 		{
-			p = environ[i];
-			return (p);
-		}
+			if (_strncmp(environ[i], name, 4) == 0)
+			{
+				p = environ[i];
+				return (p);
+			}
 
+		}
+		return (NULL);
 	}
+	write(STDIN_FILENO, "No Enviroment variables\n", 24);
 	return (NULL);
 }
 
