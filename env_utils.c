@@ -86,7 +86,7 @@ void _is_executable(info_t *info)
 	_strcpy(env, _getenv("PATH"));
 	path = strtok(env, TOKEN_DELIMITERS);
 	while (path != NULL)
-	{/* l s o l \0*/    /* / \0*/ 2  /*h e c \0 */    /*h e c / l s o l \0*/
+	{/* l s o l \0*/    /* / \0*/   /*h e c \0 */    /*h e c / l s o l \0*/
 		aux = malloc(_strlen(path) + size);  
 		if (!aux)
 			return;
