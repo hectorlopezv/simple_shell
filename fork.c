@@ -17,7 +17,6 @@ int _fork(char **path, char ***commands)
 		if (execve(*path, *commands, environ) == -1)
 		{
 			_free_2(commands, path);
-			status = 127;
 			exit(127);/* permissin denied*/
 		}
 		/*estamos ene l hijo*/

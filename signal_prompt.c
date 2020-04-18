@@ -23,7 +23,6 @@ char *_getenv(char *name)
 		}
 		return (NULL);
 	}
-	write(STDIN_FILENO, "No Enviroment variables\n", 24);
 	return (NULL);
 }
 
