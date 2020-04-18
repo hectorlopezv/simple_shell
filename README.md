@@ -9,9 +9,9 @@ Mini-Shell is a command line interpreter based on sh that brings to the table so
 Works exactly like sh, does not support iteractive mode
 ### Example Commands
 * `exit 100`
-* * `cd directory`
-* * `pwd`
-* * `ls -l`
+ * `cd directory`
+ * `pwd`
+ * `ls -l`
 
  ### Instalation
 Clone the repository, then change current directory to simple-shell, and last but not least run `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
