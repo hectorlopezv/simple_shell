@@ -15,7 +15,6 @@ int _stat(const char *filename)
 	{
 		return (0);
 	}
-
 	return (-1);
 }
 /**

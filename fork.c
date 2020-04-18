@@ -7,18 +7,16 @@
  *Return: return status error from child
  */
 
-int _fork(char *path, char **commands)
+int _fork(char **path, char ***commands)
 {
 	int status;
 	pid_t c_pid, pid;
-
 	c_pid = fork();
 	if (c_pid == 0)/*child*/
 	{
-		if (execve(path, commands, environ) == -1)
+		if (execve(*path, *commands, environ) == -1)
 		{
-			free(path);
-			free(commands);
+			_free_2(commands, path);
 			status = 127;
 			exit(127);/* permissin denied*/
 		}

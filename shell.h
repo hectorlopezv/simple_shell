@@ -36,7 +36,7 @@ char *_check_empty_path(char *path, char **command);
 
 
 /*fork*/
-int _fork(char *path, char **commands);
+int _fork(char **path, char ***commands);
 
 
 /*utils*/

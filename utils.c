@@ -40,6 +40,7 @@ int _builtin(char *builtIn, char **buffer_line, char ***collection_string)
 			write(STDOUT_FILENO, "\n", 1);
 		}
 		_free_2(collection_string, buffer_line);
+		return (0);
 	}
 
 
