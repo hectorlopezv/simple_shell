@@ -39,10 +39,10 @@ int _stat_dir(const char *filename)
  *@colection_string: 2d array of commands
  *Return: return path if found otherwise NULL
  */
-char *chech_cwd_exit(char **colection_string)
+char *chech_cwd_exit(char **collection_string)
 {
-	if (_stat(colection_string[0]) == 0)
-		return (ft_strdup(colection_string[0]));
+	if (_stat(collection_string[0]) == 0)
+		return (ft_strdup(collection_string[0]));
 	return (NULL);
 }
 
@@ -60,7 +60,7 @@ int check_for_built_in(char ***collection_string, char **buffer_line,
 
 	int built_flag;
 
-	if (collection_string[0] != NULL && collection_string != NULL)
+	if ((*collection_string)[0] != NULL && *collection_string != NULL)
 	{
 		built_flag = _builtin(*collection_string[0], buffer_line,
 				collection_string, status, argv, c_number);

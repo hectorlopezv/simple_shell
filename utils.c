@@ -1,9 +1,10 @@
 #include "shell.h"
 
+
 /**
- *_free - free 2d array
- *@parsed_buffer: 2d array
- *Return: nothing
+ *_free - free 2d array¬
+ *@parsed_buffer: 2d array¬
+ *Return: nothing¬
  */
 void _free(char **parsed_buffer)
 {
@@ -15,7 +16,6 @@ void _free(char **parsed_buffer)
 	free(parsed_buffer);
 
 }
-
 /**
  *_builtin -  builtIns
  *@builtIn: built in to look

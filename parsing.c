@@ -72,8 +72,6 @@ char *_which(char **collection_string)
 		free(path_mod_tmp), path_mod_tmp = NULL;
 	if (check_path == NULL)
 		check_path = chech_cwd_exit(collection_string);
-	if (check_path != NULL)
-		return (check_path);
 	if (check_path != NULL)/*check path then cwd*/
 		return (check_path);/*if aux is returned freed in child*/
 	return (NULL);
