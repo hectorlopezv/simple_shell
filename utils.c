@@ -23,14 +23,14 @@ void _free(char **parsed_buffer)
  *@collection_string: array of commands
  *Return: return -1 if failt
  */
-int _builtin(char *builtIn, char **buffer_line, char ***collection_string)
+int _builtin(char *builtIn, char **buffer_line, char ***collection_string, int status)
 {
 	int i;
 
 	if (_strcmp(builtIn, "exit") == 0)
 	{
 		_free_2(collection_string, buffer_line);
-		exit(EXIT_SUCCESS);
+		exit(status);
 	}
 	if (_strcmp(builtIn, "env") == 0)
 	{

@@ -43,7 +43,7 @@ int _fork(char **path, char ***commands);
 int _isspace(int c);
 int _is_empty(const char *s);
 void _free(char **parsed_buffer);
-int _builtin(char *builtIn, char **, char ***);
+int _builtin(char *builtIn, char **, char ***, int);
 void _free_2(char ***parsed_buffer, char **path);
 
 /*string_utils*/

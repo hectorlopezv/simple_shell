@@ -33,7 +33,7 @@ int main(__attribute__((unused)) int ac, char **argv)
 			collection_string = _tokenizer(buffer_line);
 			if (collection_string[0] != NULL && collection_string != NULL)
 			{
-				built_flag = _builtin(collection_string[0], &buffer_line, &collection_string);
+				built_flag = _builtin(collection_string[0], &buffer_line, &collection_string, status);
 				if (built_flag != -1)
 					continue;
 			}
