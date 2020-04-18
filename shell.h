@@ -21,7 +21,7 @@ void sig_handler(int num);
 
 
 /*ENV*/
-char *_getenv(char *name, char **env);
+char *_getenv(char *name);
 
 
 /*PATH*/

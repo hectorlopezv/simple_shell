@@ -6,7 +6,9 @@ int main (int ac, char **argv)
 	char *buffer_line;
 	size_t n_bytes_line;
 	char **collection_string, *c_number_char, *path, *check_path;
+	int path_slash;
 
+	path_slash = 0;
 	buffer_line = NULL, collection_string = NULL, path = NULL;
 	n_bytes_line = 0, c_number = 0, status = 0;
 	signal(SIGINT, sig_handler);
@@ -14,6 +16,7 @@ int main (int ac, char **argv)
 	while(1)
 	{
 		c_number++;/*count line*/
+		path_slash = 0;
 		//		printf("count # %d\n",c_number);
 		if(isatty(STDIN_FILENO) == 1)
 			_prompt();
@@ -39,27 +42,28 @@ int main (int ac, char **argv)
 
 		if(buffer_line != NULL)
 		{
-			buffer_line[_strlen(buffer_line) - 1] = 0;
+			buffer_line[_strlen(buffer_line)] = 0;
 
-			printf("obvio\n");
 			if (_is_empty(buffer_line) == 1)
 				continue;
 
-
-			/*   printf("%s\n",environ[0]);*/
 			collection_string = _tokenizer(buffer_line);
 
 			if (collection_string[0] != NULL && collection_string != NULL)
 				_builtin(collection_string[0], buffer_line, collection_string);
-			path = _which(collection_string);
-			/*printf("path econtrado %s\n",path);*/
+			path = _which(collection_string);/*mmm*/
 			if (path == NULL)
 			{
-				check_path = _check_cwd(collection_string);
-				if (check_path != NULL)
+				if(_stat(collection_string[0]) == 0)
 				{
-					path = ft_strdup(check_path);
+					path_slash = 1;
+					path = ft_strdup(collection_string[0]);
 				}
+			}
+
+
+			if (path == NULL && path_slash == 0)
+			{
 				c_number_char = convert(c_number, 10);
 				write(STDERR_FILENO, argv[0], _strlen(argv[0]) );
 				write(STDERR_FILENO, ": ", 2);
@@ -77,13 +81,21 @@ int main (int ac, char **argv)
 			}
 
 			// builtIn ,  path= -> cwd ,  PATH ->cwd->NULL
+			status = _fork(path, collection_string);
+			if (path != NULL)
+				free(path);
+			if (collection_string != NULL)
+				_free(collection_string);
+			path = NULL, collection_string = NULL;
 
-			//status = _fork(path, collection_string);
-			//	if(status == -1)
 
-		}
-	}
-}
+		}/*IF*/
+
+
+
+	}/*while*/
+
+}/*main*/
 
 
 void _prompt(void)
@@ -115,9 +127,8 @@ char **_tokenizer(char *buffer_line)
 	{
 		if(_is_empty(buffer_line) == 0)
 		{
-
+			//			printf("%s\n",piece);
 			pieces[i] = ft_strdup(piece);/*space for the string*/
-			printf("lo que metio al array %s\n",pieces[i]);
 		}
 		i++;
 		piece = strtok(NULL, TOKEN_DELIMITERS);
@@ -223,7 +234,6 @@ char *tokenizer_path_mod(char **path_mod, int size, char **command)
 
 		path_pointer = strtok(NULL,TOKEN_DELIMITERS);
 		free(aux);
-		aux = NULL;
 	}
 	return (NULL);
 
@@ -290,19 +300,16 @@ char *_check_cwd(char **command)
  *     * Return: pointer string with found path or NULL in failure.
  *      */
 
-char *_getenv(char *name, char **env)
+char *_getenv(char *name)
 {
 
 	size_t  i;
 	char *p;
-	printf("hello1\n");
-	for (i = 0; env[i] != NULL; i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (_strncmp(env[i], name, 4) == 0)
+		if (_strncmp(environ[i], name, 4) == 0)
 		{
-			printf("hello2\n");
-			printf("%s\n",env[i]);
-			p = env[i];
+			p = environ[i];
 			return (p);
 		}
 
@@ -390,7 +397,6 @@ char *_check_empty_path(char *path, char **command)
 {
 	if (_strcmp(path, "PATH=") == 0)
 	{
-		printf("entro en check if\n");
 
 		if (_stat_dir(command[0]) == 0)/*if is in cwd and its a dir and read*/
 		{
@@ -398,7 +404,6 @@ char *_check_empty_path(char *path, char **command)
 		}
 		else if (_stat(command[0]) == 0)/*id is a file and executable*/
 		{
-			printf("entro en check file\n");
 			return (command[0]);
 		}
 
@@ -426,24 +431,39 @@ char *_which(char **collection_string)
 
 	n_dir = 0,
 		  c_number=0;
-	path_mod = NULL;
-	path_dup = NULL;
+	path_mod = malloc(1);
+	path_dup = malloc(1);
 	check_path = NULL;
 	size = _strlen(collection_string[0]);
-	path = _getenv("PATH", environ);
-	if (path == NULL)/*no path in environ*/
+	path = _getenv("PATH");
+	if (path == NULL)
 	{
-		if (_stat(collection_string[0]) == 0){
-			return (collection_string[0]);
+		check_path = _check_empty_path(path, collection_string);/* CHECK IF PATH empty PATH=*/
+		if (check_path != NULL)
+		{
+			free(path_dup);
+			free(path_mod);
+			path_dup = NULL;
+			path_mod = NULL;
+			return ft_strdup(check_path);/*malloc*/
 		}
-		return (NULL);
+	}
+	if (strcmp(path, "PATH=") == 0)
+	{
+		check_path = _check_empty_path(path, collection_string);/* CHECK IF PATH empty PATH=*/
+		if (check_path != NULL)
+		{
+			free(path_dup);
+			free(path_mod);
+			path_dup = NULL;
+			path_mod = NULL;
+			return ft_strdup(check_path);/*malloc*/
+		}
 	}
 
-	check_path = _check_empty_path(path, collection_string);/* CHECK IF PATH empty PATH=*/
-	if (check_path != NULL)
-	{
-		return (check_path);/*if cwd if not look in path*/
-	}
+
+	free(path_dup);
+	free(path_mod);
 	path_dup = ft_strdup(path);/*malloc*/
 	largo_prueba = _strlen(path_dup);
 	count_for_cwd(path_dup, &n_dir, &c_number, largo_prueba);/*count cases .: :: :.*/
@@ -457,17 +477,21 @@ char *_which(char **collection_string)
 	//printf("path modificado corrido %s\n",path_mod);
 
 	check_path = tokenizer_path_mod(&path_mod, size, collection_string);/*malloc*/
-
-	free(path_dup);/*trash*/
-	free(path_mod_tmp);
-	path_dup = NULL;
-	path_mod_tmp = NULL;
+	if (path_dup != NULL)
+	{
+		free(path_dup);/*trash*/
+		path_dup = NULL;
+	}
+	if (path_mod_tmp != NULL)
+	{
+		free(path_mod_tmp);
+		path_mod_tmp = NULL;
+	}
 
 	if (check_path != NULL)   {/*check path then cwd*/
 		return (check_path);/*if aux is returned it will be freed in child*/
 	}
 	/*no path ,no cwd*/
-	check_path = NULL;
 	return (NULL);/* NO ES CWD O PATH*/
 }
 
@@ -517,13 +541,15 @@ int _fork(char *path, char **commands)
 	c_pid = fork();
 	if (c_pid == 0)/*child*/
 	{
-		//			if (_exec(path,commands) == -1)
-		//			{
-		//				status = 126;
-		//				exit(status);/* permissin denied*/
-		//			}
+		if (execve(path, commands , environ) == -1)
+		{
+			free(path);
+			free(commands);
+			status = 127;
+			exit(127);/* permissin denied*/
+		}
 		/*estamos ene l hijo*/
-		printf("SOY EL HIJO\n");
+		//printf("SOY EL HIJO\n");
 	}
 	else if (c_pid > 0)
 	{
@@ -541,11 +567,3 @@ int _fork(char *path, char **commands)
 	return(-1);/*error on fork look errno*/
 }
 
-
-int _exec(char *path, char **commands)
-{
-	if (execve(path, commands, environ) == -1)
-		return (-1);
-
-	return (0);
-}
