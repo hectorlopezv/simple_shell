@@ -17,7 +17,6 @@ int main (__attribute__((unused)) int ac, char **argv)
 	{
 		c_number++;/*count line*/
 		path_slash = 0;
-		//		printf("count # %d\n",c_number);
 		if(isatty(STDIN_FILENO) == 1)
 			_prompt();
 		if(getline(&buffer_line, &n_bytes_line, stdin) == EOF)
@@ -80,7 +79,7 @@ int main (__attribute__((unused)) int ac, char **argv)
 				continue;
 			}
 
-			// builtIn ,  path= -> cwd ,  PATH ->cwd->NULL
+			/* builtIn ,  path= -> cwd ,  PATH ->cwd->NULL*/
 			status = _fork(path, collection_string);
 			if (path != NULL)
 				free(path);
@@ -94,7 +93,7 @@ int main (__attribute__((unused)) int ac, char **argv)
 
 
 	}/*while*/
-
+	return (0);
 }/*main*/
 
 
@@ -127,7 +126,6 @@ char **_tokenizer(char *buffer_line)
 	{
 		if(_is_empty(buffer_line) == 0)
 		{
-			//			printf("%s\n",piece);
 			pieces[i] = ft_strdup(piece);/*space for the string*/
 		}
 		i++;
@@ -467,14 +465,10 @@ char *_which(char **collection_string)
 	path_dup = ft_strdup(path);/*malloc*/
 	largo_prueba = _strlen(path_dup);
 	count_for_cwd(path_dup, &n_dir, &c_number, largo_prueba);/*count cases .: :: :.*/
-	//	printf("el numero de directorios encontrados con los casos especiales %d\n", n_dir);
-	//	printf("numero de casos normales %d\n", c_number);
 	path_mod = malloc((c_number + n_dir) * sizeof(char));
 	path_mod_tmp = path_mod;/*malloc*/
 	set_path_mod(&path_mod, path_dup, largo_prueba);/*modifiy*/
-	//printf("path modificado %s\n",path_mod);
 	path_mod += 5;/*move pointer to =*/
-	//printf("path modificado corrido %s\n",path_mod);
 
 	check_path = tokenizer_path_mod(&path_mod, size, collection_string);/*malloc*/
 	if (path_dup != NULL)
@@ -549,7 +543,6 @@ int _fork(char *path, char **commands)
 			exit(127);/* permissin denied*/
 		}
 		/*estamos ene l hijo*/
-		//printf("SOY EL HIJO\n");
 	}
 	else if (c_pid > 0)
 	{
