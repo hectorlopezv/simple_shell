@@ -63,3 +63,19 @@ int _isspace(int c)
 			c == '\v' || c == '\f' || c == '\r' || c == ' ' ? 1 : 0);
 }
 
+
+
+/**
+ *_free_2 - free 2d array
+ *@parsed_buffer: 2d array
+ *@path: path to clean
+ *Return: nothing
+ */
+void _free_2(char ***parsed_buffer, char **path)
+{
+	if (path != NULL)
+		free(*path);
+	if (parsed_buffer != NULL)
+		_free(*parsed_buffer);
+	*path = NULL, *parsed_buffer = NULL;
+}

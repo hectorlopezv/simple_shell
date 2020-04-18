@@ -13,6 +13,9 @@
 #define TOKEN_DELIMITERS " \t\r\n\a :"
 extern char **environ;
 
+/*erros*/
+
+int error_shell(int c_number, char **argv, char **colection_string);
 
 /*parsing*/
 char **_tokenizer(char *buffer_line);
@@ -41,7 +44,7 @@ int _isspace(int c);
 int _is_empty(const char *s);
 void _free(char **parsed_buffer);
 int _builtin(char *builtIn, char *, char **);
-
+void _free_2(char ***parsed_buffer, char **path);
 
 /*string_utils*/
 char *_strcpy(char *dest, char *src);
@@ -58,5 +61,6 @@ char *_convert(long int num, int base);
 /*validation*/
 int _stat_dir(const char *filename);
 int _stat(const char *filename);
+
 
 #endif

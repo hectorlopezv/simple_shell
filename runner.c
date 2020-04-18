@@ -4,7 +4,7 @@ int main(__attribute__((unused)) int ac, char **argv)
 {
 	int c_number, status, path_slash;
 	size_t n_bytes_line;
-	char **collection_string, *c_number_char, *path, *buffer_line;
+	char **collection_string, *path, *buffer_line;
 
 	buffer_line = NULL, collection_string = NULL, path = NULL;
 	n_bytes_line = 0, c_number = 0, status = 0, path_slash = 0;
@@ -26,7 +26,7 @@ int main(__attribute__((unused)) int ac, char **argv)
 				_free(collection_string), collection_string = NULL;
 			if (isatty(STDIN_FILENO) == 0)/*iteractive mode*/
 				exit(status);
-			break;
+			exit(status);
 		}
 		if (buffer_line != NULL)
 		{
@@ -41,27 +41,12 @@ int main(__attribute__((unused)) int ac, char **argv)
 					path_slash = 1, path = ft_strdup(collection_string[0]);
 			if (path == NULL && path_slash == 0)
 			{
-				c_number_char = _convert(c_number, 10);
-				write(STDERR_FILENO, argv[0], _strlen(argv[0]));
-				write(STDERR_FILENO, ": ", 2);
-				write(STDERR_FILENO, c_number_char, _strlen(c_number_char));
-				write(STDERR_FILENO, ": ", 2);
-				write(STDERR_FILENO, collection_string[0], _strlen(collection_string[0]));
-				write(STDERR_FILENO, ": not found\n", 12);
-				status = 127;
-				if (path != NULL)
-					free(path);
-				if (collection_string != NULL)
-					_free(collection_string);
-				path = NULL, collection_string = NULL;
+				status = error_shell(c_number, argv, collection_string);
+				_free_2(&collection_string, &path);
 				continue;
 			}
 			status = _fork(path, collection_string);
-			if (path != NULL)
-				free(path);
-			if (collection_string != NULL)
-				_free(collection_string);
-			path = NULL, collection_string = NULL;
+			_free_2(&collection_string, &path);
 		}
 	}
 	return (0);
