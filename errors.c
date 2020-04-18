@@ -34,7 +34,7 @@ int _error(info_t *info)
 		{
 			write(STDERR_FILENO, info->arguments[0], _strlen(info->arguments[0]) - 1);
 			write(STDERR_FILENO, ": ", 2);
-			write(STDERR_FILENO, count_char, _strlen(count_char - 1));
+			write(STDERR_FILENO, count_char, _strlen(count_char - 1)-1);
 			write(STDERR_FILENO, ": ", 2);
 			write(STDERR_FILENO, info->tokenized[0], _strlen(info->tokenized[0]) - 1);
 			write(STDERR_FILENO, errors[i].message, _strlen(errors[i].message) - 1);
