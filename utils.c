@@ -73,9 +73,9 @@ int _isspace(int c)
  */
 void _free_2(char ***parsed_buffer, char **path)
 {
-	if (path != NULL)
+	if (*path != NULL)
 		free(*path);
-	if (parsed_buffer != NULL)
+	if (*parsed_buffer != NULL)
 		_free(*parsed_buffer);
 	*path = NULL, *parsed_buffer = NULL;
 }
