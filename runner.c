@@ -20,10 +20,7 @@ int main(__attribute__((unused)) int ac, char **argv)
 			if (isatty(STDIN_FILENO) == 1)
 				write(1, "\n", 1);
 			free(buffer_line), buffer_line = NULL;
-			if (path != NULL)
-				free(path), path = NULL;
-			if (collection_string != NULL)
-				_free(collection_string), collection_string = NULL;
+			_free_2(&collection_string, &path);
 			if (isatty(STDIN_FILENO) == 0)/*iteractive mode*/
 				exit(status);
 			exit(status);
