@@ -16,6 +16,7 @@ int _fork(char **path, char ***commands)
 	{
 		if (execve(*path, *commands, environ) == -1)
 		{
+			fflush(stdin);
 			_free_2(commands, path);
 			status = 127;
 			exit(127);/* permissin denied*/
@@ -24,6 +25,7 @@ int _fork(char **path, char ***commands)
 	}
 	else if (c_pid > 0)
 	{
+		fflush(stdin);
 		pid = wait(&status);
 		if (pid < 0)/*error*/
 			exit(EXIT_FAILURE);
