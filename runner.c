@@ -31,7 +31,10 @@ int main(__attribute__((unused)) int ac, char **argv)
 				continue;
 			collection_string = _tokenizer(buffer_line);
 			if (collection_string[0] != NULL && collection_string != NULL)
-				_builtin(collection_string[0], buffer_line, collection_string);
+			{
+				_builtin(collection_string[0], &buffer_line, &collection_string);
+				continue;
+			}
 			path = _which(collection_string);/*mmm*/
 			if (path == NULL)
 				if (_stat(collection_string[0]) == 0)

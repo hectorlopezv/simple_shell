@@ -23,15 +23,27 @@ void _free(char **parsed_buffer)
  *@collection_string: array of commands
  *Return: return -1 if failt
  */
-int _builtin(char *builtIn, char *buffer_line, char **collection_string)
+int _builtin(char *builtIn, char **buffer_line, char ***collection_string)
 {
+	int i;
+
 	if (_strcmp(builtIn, "exit") == 0)
 	{
-		free(buffer_line);
-		if (collection_string != NULL)
-			_free(collection_string);
+		_free_2(collection_string, buffer_line);
 		exit(EXIT_SUCCESS);
 	}
+	if (_strcmp(builtIn, "env") == 0)
+	{
+		for (i = 0; environ[i] != NULL; i++)
+		{
+			write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
+			write(STDOUT_FILENO, "\n", 1);
+		}
+		_free_2(collection_string, buffer_line);
+	}
+
+
+
 	return (-1);
 }
 
