@@ -1,4 +1,4 @@
-#simple - Shell
+# Simple - Shell
 
 [![Everything Is AWESOME](https://i.imgur.com/YNXlg6A.png)](https://www.youtube.com/watch?v=Tw2dobf_rP0&feature=youtu.be "Indoor Delivery Robots")
 ### Description
@@ -55,8 +55,9 @@ Works exactly like sh, does not support iteractive mode
 * Work still in progress, aliases and piping , redirection not available.
 * ### AUTHORS
 * *Samuel Gomez*   [Github](https://github.com/samgj18) :mortar_board:
-* *Hector Lopez* [Github](https://github.com/hectorlopezv):snowman:
+* *Hector Lopez* [Github](https://github.com/hectorlopezv)
 *
-* [![Run on Repl.it](https://repl.it/badge/github/samgj18/simple_shell)](https://repl.it/github/samgj18/simple_shell)
 *
-
+*
+*
+*
