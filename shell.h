@@ -73,7 +73,7 @@ int _exec(info_t *info);
 int _error(info_t *info);
 
 /* Utils functions */
-size_t _strlen(const char *str);
+int _strlen(const char *str);
 char *_strcpy(char *destination, const char *source);
 char *_strcat(char *str1, const char *str2);
 char *_getenv(const char *name);

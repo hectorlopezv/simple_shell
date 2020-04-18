@@ -36,7 +36,7 @@ char *_which(info_t *info)
 	char *path, *aux, env[300];
 	int size;
 
-	size = _strlen(info->tokenized[0]) - 1;
+	size = _strlen(info->tokenized[0]);
 
 	if (!info->tokenized)
 		return (NULL);
@@ -44,7 +44,7 @@ char *_which(info_t *info)
 	path = strtok(env, TOKEN_DELIMITERS);
 	while (path != NULL)
 	{
-		aux = malloc(_strlen(path) + size + 1);
+		aux = malloc(_strlen(path) + size );
 		if (!aux)
 			return (NULL);
 		aux = _strcpy(aux, path);
@@ -71,11 +71,11 @@ char *_which(info_t *info)
 
 void _is_executable(info_t *info)
 {
-	char *path, *aux, env[300];
+	char *path, *aux, env[512];
 	int size;
 
-	size = _strlen(info->tokenized[0]) - 1;
-	if (!info->tokenized)
+	size = _strlen(info->tokenized[0]);
+	if (info->tokenized == NULL)
 		return;
 
 	if (_stat(info->tokenized[0]) == 0)
@@ -86,8 +86,8 @@ void _is_executable(info_t *info)
 	_strcpy(env, _getenv("PATH"));
 	path = strtok(env, TOKEN_DELIMITERS);
 	while (path != NULL)
-	{
-		aux = malloc(_strlen(path) + size + 1);
+	{/* l s o l \0*/    /* / \0*/ 2  /*h e c \0 */    /*h e c / l s o l \0*/
+		aux = malloc(_strlen(path) + size);  
 		if (!aux)
 			return;
 
