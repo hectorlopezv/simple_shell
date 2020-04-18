@@ -52,6 +52,7 @@ char *_strcpy(char *dest, char* src);
 char *_strcat(char *dest,  char *src);
 int _strlen(char *buffer);
 int _strncmp(char* s1, char* s2, size_t n);
+int _strcmp(char* s1, char* s2);
 char *_convert(long int num, int base);
 
 /*validation*/
