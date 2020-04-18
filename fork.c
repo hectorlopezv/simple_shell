@@ -42,6 +42,7 @@ int _fork(info_t *info)
 		else
 			exit(EXIT_FAILURE);
 	}
+  
 	info->error_status = 127;
 	status = info->error_status;
 	_error(info);
@@ -60,7 +61,6 @@ void _clean_up(info_t *info, int selector)
 	{
 		_error(info);
 		free(info);
-		return;
 	}
 	_error(info);
 	_free(info);

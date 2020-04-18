@@ -36,7 +36,7 @@ char *_which(info_t *info)
 	char *path, *aux, env[300];
 	int size;
 
-	size = _strlen(info->tokenized[0]);
+	size = _strlen(info->tokenized[0]) - 1;
 
 	if (!info->tokenized)
 		return (NULL);
@@ -74,7 +74,7 @@ void _is_executable(info_t *info)
 	char *path, *aux, env[300];
 	int size;
 
-	size = _strlen(info->tokenized[0]);
+	size = _strlen(info->tokenized[0]) - 1;
 	if (!info->tokenized)
 		return;
 
