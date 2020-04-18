@@ -7,7 +7,7 @@ int main(__attribute__((unused)) int ac, char **argv)
 	char **collection_string, *path, *buffer_line;
 
 	buffer_line = NULL, collection_string = NULL, path = NULL;
-	n_bytes_line = 0, c_number = 0, path_slash = 0;
+	n_bytes_line = 0, c_number = 0, path_slash = 0, status = 0;
 	signal(SIGINT, sig_handler);
 
 	while (1)
