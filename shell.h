@@ -12,6 +12,8 @@
 
 #define TOKEN_DELIMITERS " \t\r\n\a :"
 extern char **environ;
+
+
 /*parsing*/
 char **_tokenizer(char *buffer_line);
 char *_which(char **collection_string);
@@ -19,9 +21,6 @@ char *_which(char **collection_string);
 /*signal_prompt*/
 void _prompt(void);
 void sig_handler(int num);
-
-
-/*ENV*/
 char *_getenv(char *name);
 
 
@@ -33,26 +32,27 @@ char *_check_cwd(char **command);
 char *_check_empty_path(char *path, char **command);
 
 
-
-/*exec_ve*/
+/*fork*/
 int _fork(char *path, char **commands);
-int _exec(char *path, char **commands);
-
 
 
 /*utils*/
 int _isspace(int c);
 int _is_empty(const char *s);
-char *ft_strdup(char *src);
 void _free(char **parsed_buffer);
 int _builtin(char *builtIn, char *, char **);
+
 
 /*string_utils*/
 char *_strcpy(char *dest, char* src);
 char *_strcat(char *dest,  char *src);
-int _strlen(char *buffer);
+char *ft_strdup(char *src);
 int _strncmp(char* s1, char* s2, size_t n);
 int _strcmp(char* s1, char* s2);
+
+
+/*string_utils_2*/
+int _strlen(char *buffer);
 char *_convert(long int num, int base);
 
 /*validation*/
