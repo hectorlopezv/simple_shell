@@ -42,7 +42,7 @@ int main (__attribute__((unused)) int ac, char **argv)
 
 		if(buffer_line != NULL)
 		{
-			buffer_line[_strlen(buffer_line)] = 0;
+			/*			buffer_line[_strlen(buffer_line)] = 0;*/
 
 			if (_is_empty(buffer_line) == 1)
 				continue;
