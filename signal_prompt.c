@@ -30,7 +30,7 @@ char *_getenv(char *name)
 
 void _prompt(void)
 {
-	write(STDIN_FILENO, "$ ", 2);
+	write(STDIN_FILENO, "> ", 2);
 }
 
 /**
