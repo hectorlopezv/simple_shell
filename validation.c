@@ -36,7 +36,7 @@ int _stat_dir(const char *filename)
 
 /**
  *chech_cwd_exit - check cwd then set error
- *@colection_string: 2d array of commands
+ *@collection_string: 2d array of commands
  *Return: return path if found otherwise NULL
  */
 char *chech_cwd_exit(char **collection_string)
@@ -51,6 +51,8 @@ char *chech_cwd_exit(char **collection_string)
  *@collection_string: 2d array of commands
  *@buffer_line: buffer line
  *@status: exit status
+ *@argv: command line arguments
+ *@c_number: c_number of line command line
  *Return: 0 if found -1 not found
  */
 
@@ -80,7 +82,7 @@ int check_for_built_in(char ***collection_string, char **buffer_line,
 int _atoi(char *s)
 {
 	int n, contador;
-	unsigned int str, y, i;
+	int str, y, i;
 
 	str = 0;
 	y = 0;

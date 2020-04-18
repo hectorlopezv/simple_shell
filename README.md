@@ -1,6 +1,6 @@
 # Simple - Shell
 
-[![Everything Is AWESOME](https://i.imgur.com/YNXlg6A.png)](https://www.youtube.com/watch?v=Tw2dobf_rP0&feature=youtu.be "Indoor Delivery Robots")
+[![Everything Is AWESOME](https://i.imgur.com/YNXlg6A.png)]()
 ### Description
 Mini-Shell is a command line interpreter based on sh that brings to the table some of the basic features that sh offers.
 
@@ -14,24 +14,23 @@ Works exactly like sh, does not support iteractive mode
  * `ls -l`
 
  ### Instalation
-Clone the repository, then change current directory to simple-shell, and last but not least run `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
+ Clone the repository, then change current directory to simple-shell, and last but not least run `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
 
  ### Files
-| File | Description|
- | ------ | ------ |
- |builtins.c |function for handling builtins|
- |errors.c| handle errors of the program|
- |exec.c| execve implementation for Simple Shell|* |fork.c| creates a new process from the parent|
- |fork.c| creates a new process from the parent|
- |main.c|entry point|
- |prompt.c|function to get the line typed|
- |shell.h|header file with functions declarations |
- |signals.c| signal handler for signal as SIGINT|
- |stat.c|stat of a file.|
- |tokenizer.c|split a string into a single word|
- |utils.c|file containing various functions used for multipurpose|
- |which.c|function for finding the  directory needed|
 
+ | File | Description|
+ | ------ | ------ |
+ |parsing.c |function for parsing the path|
+ |errors.c| handle errors of the program|
+ |fork.c| creates a new process from the parent|
+ |signal_prompt.c| functions related to signal handling and prompt|
+ |runner.c|entry point|
+ |shell.h|header file with functions declarations |
+ |path.c| funcntions for handling the path|
+ |utils.c|utility functions for various operations|
+ |strings_utils.c|functions for handling strings|
+ |strings.c|functions for handling strings|
+ |validation.c|functions for validating a path|
 
  | Special Features | Purpose|
  | ------ | ------ |
@@ -54,7 +53,3 @@ Clone the repository, then change current directory to simple-shell, and last bu
  ### AUTHORS
  *Samuel Gomez*   [Github](https://github.com/samgj18) :mortar_board:
  *Hector Lopez* [Github](https://github.com/hectorlopezv)
-
-
-
-

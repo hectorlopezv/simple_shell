@@ -22,10 +22,12 @@ void _free(char **parsed_buffer)
  *@buffer_line: buffer_line to free
  *@collection_string: array of commands
  *@status: error status
+ *@argv: arguments
+ *@c_number: c_number
  *Return: return -1 if failt
  */
 int _builtin(char *builtIn, char **buffer_line, char ***collection_string,
-		int * status, char ** argv, int c_number)
+		int *status, char **argv, int c_number)
 {
 	int i;
 	char *target;
@@ -45,14 +47,16 @@ int _builtin(char *builtIn, char **buffer_line, char ***collection_string,
 				}
 			}
 			*status = _atoi((*collection_string)[1]);
-			_free_2(collection_string, buffer_line);
-			exit(*status);
-
+			if (*status < 0)
+			{
+				*status = error_shell(c_number, argv, *collection_string, 2);
+				_free_2(collection_string, buffer_line);
+				return (0);
+			}
+			_free_2(collection_string, buffer_line), exit(*status);
 		}
-		_free_2(collection_string, buffer_line);
-		exit(*status);
+		_free_2(collection_string, buffer_line), exit(*status);
 	}
-
 	if (_strcmp(builtIn, "env") == 0)
 	{
 		for (i = 0; environ[i] != NULL; i++)
@@ -63,9 +67,6 @@ int _builtin(char *builtIn, char **buffer_line, char ***collection_string,
 		_free_2(collection_string, buffer_line);
 		return (0);
 	}
-
-
-
 	return (-1);
 }
 

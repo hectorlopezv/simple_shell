@@ -5,6 +5,7 @@
  *@c_number: number of words
  *@argv: number of arguments passed CL
  *@colection_string: commands
+ *@status: status of exit
  *Return: return the error status
  */
 int error_shell(int c_number, char **argv, char **colection_string, int status)
@@ -31,7 +32,7 @@ int error_shell(int c_number, char **argv, char **colection_string, int status)
 		write(STDERR_FILENO, c_number_char, _strlen(c_number_char));
 		write(STDERR_FILENO, ": ", 2);
 		write(STDERR_FILENO, colection_string[0], _strlen(colection_string[0]));
-		write(STDERR_FILENO, ": Illegal number: ", _strlen(": Illegal number: "));/*127*/
+		write(STDERR_FILENO, ": Illegal number: ", _strlen(": Illegal number: "));
 		write(STDERR_FILENO, colection_string[1], _strlen(colection_string[1]));
 		write(STDERR_FILENO, "\n", 1);
 	}

@@ -33,7 +33,8 @@ int main(__attribute__((unused)) int ac, char **argv)
 			if (_is_empty(buffer_line) == 1)/* empty*/
 				continue;
 			collection_string = _tokenizer(buffer_line);
-			if (check_for_built_in(&collection_string, &buffer_line, &status, argv, c_number) == 0)
+			if (check_for_built_in(&collection_string, &buffer_line,
+						&status, argv, c_number) == 0)
 				continue;/* builtin*/
 			path = _which(collection_string);/*malloc - check path*/
 			if (path == NULL)
