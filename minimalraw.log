@@ -1,0 +1,192 @@
+==94== Memcheck, a memory error detector
+==94== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==94== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==94== Command: ./hsh
+==94== Parent PID: 13
+==94== 
+--94-- 
+--94-- Valgrind options:
+--94--    --leak-check=full
+--94--    --show-reachable=yes
+--94--    --error-limit=no
+--94--    --track-origins=yes
+--94--    --verbose
+--94--    --trace-children=yes
+--94--    --log-file=minimalraw.log
+--94-- Contents of /proc/version:
+--94--   Linux version 4.15.0-1036-gcp (buildd@lcy01-amd64-020) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10)) #38~16.04.1-Ubuntu SMP Tue Jun 25 15:30:46 UTC 2019
+--94-- 
+--94-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--94-- Page sizes: currently 4096, max supported 4096
+--94-- Valgrind library directory: /usr/lib/valgrind
+--94-- Reading syms from /home/runner/simpleshell/hsh
+--94-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
+--94--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
+--94--   .. CRC mismatch (computed 1b7c895e wanted 2943108a)
+--94--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
+--94--   .. CRC is valid
+--94-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--94--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--94--   .. CRC mismatch (computed 41ddb025 wanted 9972f546)
+--94--    object doesn't have a symbol table
+--94--    object doesn't have a dynamic symbol table
+--94-- Scheduler: using generic scheduler lock implementation.
+--94-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==94== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-94-by-???-on-78f40f20e517
+==94== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-94-by-???-on-78f40f20e517
+==94== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-94-by-???-on-78f40f20e517
+==94== 
+==94== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==94== don't want to do, unless you know exactly what you're doing,
+==94== or are doing some strange experiment):
+==94==   /usr/lib/valgrind/../../bin/vgdb --pid=94 ...command...
+==94== 
+==94== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==94==   /path/to/gdb ./hsh
+==94== and then give GDB the following command
+==94==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=94
+==94== --pid is optional if only one valgrind process is running
+==94== 
+--94-- REDIR: 0x401f2f0 (ld-linux-x86-64.so.2:strlen) redirected to 0x580608c1 (???)
+--94-- REDIR: 0x401f0d0 (ld-linux-x86-64.so.2:index) redirected to 0x580608db (???)
+--94-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--94--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--94--   .. CRC mismatch (computed 50df1b30 wanted 4800a4cf)
+--94--    object doesn't have a symbol table
+--94-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--94--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--94--   .. CRC mismatch (computed f893b962 wanted 95ee359e)
+--94--    object doesn't have a symbol table
+==94== WARNING: new redirection conflicts with existing -- ignoring it
+--94--     old: 0x0401f2f0 (strlen              ) R-> (0000.0) 0x580608c1 ???
+--94--     new: 0x0401f2f0 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
+--94-- REDIR: 0x401d360 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
+--94-- REDIR: 0x401f830 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
+--94-- Reading syms from /usr/local/lib/repl.so
+--94-- ELF section outside all mapped regions
+--94-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
+--94--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
+--94--   .. CRC mismatch (computed b1c74187 wanted 042cc048)
+--94--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
+--94--   .. CRC is valid
+--94-- REDIR: 0x4edac70 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9d40 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edaf50 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9790 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9d70 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edc7c0 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edade0 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edac10 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9d00 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9800 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edad40 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ef80f0 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9ca0 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9870 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edafa0 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9840 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edb0e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9da0 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed97c0 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ed9c70 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ee46c0 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edaff0 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edabe0 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4ef8eb0 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4eda050 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edaf20 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edaef0 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edc7f0 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4edb040 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--94-- REDIR: 0x4fca3c0 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
+--94-- REDIR: 0x4ed3070 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
+--94-- REDIR: 0x4fc6420 (libc.so.6:__memchr_avx2) redirected to 0x4c33f80 (memchr)
+--94-- REDIR: 0x4fcaad0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4c366e0 (memmove)
+--94-- REDIR: 0x4fc6300 (libc.so.6:__strspn_sse42) redirected to 0x4c37990 (strspn)
+==95== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-95-by-???-on-78f40f20e517
+==95== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-95-by-???-on-78f40f20e517
+==95== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-95-by-???-on-78f40f20e517
+==95== 
+==95== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==95== don't want to do, unless you know exactly what you're doing,
+==95== or are doing some strange experiment):
+==95==   /usr/lib/valgrind/../../bin/vgdb --pid=95 ...command...
+==95== 
+==95== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==95==   /path/to/gdb ./hsh
+==95== and then give GDB the following command
+==95==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=95
+==95== --pid is optional if only one valgrind process is running
+==95== 
+==95== Invalid read of size 1
+==95==    at 0x109AE7: _strlen (in /home/runner/simpleshell/hsh)
+==95==    by 0x109D48: _which (in /home/runner/simpleshell/hsh)
+==95==    by 0x10938C: _fork (in /home/runner/simpleshell/hsh)
+==95==    by 0x109590: _loop (in /home/runner/simpleshell/hsh)
+==95==    by 0x1095F1: main (in /home/runner/simpleshell/hsh)
+==95==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==95== 
+==95== 
+==95== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==95==  Access not within mapped region at address 0x0
+==95==    at 0x109AE7: _strlen (in /home/runner/simpleshell/hsh)
+==95==    by 0x109D48: _which (in /home/runner/simpleshell/hsh)
+==95==    by 0x10938C: _fork (in /home/runner/simpleshell/hsh)
+==95==    by 0x109590: _loop (in /home/runner/simpleshell/hsh)
+==95==    by 0x1095F1: main (in /home/runner/simpleshell/hsh)
+==95==  If you believe this happened as a result of a stack
+==95==  overflow in your program's main thread (unlikely but
+==95==  possible), you can try to increase the size of the
+==95==  main thread stack using the --main-stacksize= flag.
+==95==  The main thread stack size used in this run was 8388608.
+--95-- REDIR: 0x4ed3950 (libc.so.6:free) redirected to 0x4c30cd0 (free)
+==95== 
+==95== HEAP SUMMARY:
+==95==     in use at exit: 1,144 bytes in 2 blocks
+==95==   total heap usage: 3 allocs, 1 frees, 2,168 bytes allocated
+==95== 
+==95== Searching for pointers to 2 not-freed blocks
+==95== Checked 71,720 bytes
+==95== 
+==95== 120 bytes in 1 blocks are still reachable in loss record 1 of 2
+==95==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==95==    by 0x4EBBB8B: getdelim (iogetdelim.c:62)
+==95==    by 0x109860: _get_prompt (in /home/runner/simpleshell/hsh)
+==95==    by 0x1094D2: _loop (in /home/runner/simpleshell/hsh)
+==95==    by 0x1095F1: main (in /home/runner/simpleshell/hsh)
+==95== 
+==95== 1,024 bytes in 1 blocks are still reachable in loss record 2 of 2
+==95==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==95==    by 0x109A36: _split_string (in /home/runner/simpleshell/hsh)
+==95==    by 0x109533: _loop (in /home/runner/simpleshell/hsh)
+==95==    by 0x1095F1: main (in /home/runner/simpleshell/hsh)
+==95== 
+==95== LEAK SUMMARY:
+==95==    definitely lost: 0 bytes in 0 blocks
+==95==    indirectly lost: 0 bytes in 0 blocks
+==95==      possibly lost: 0 bytes in 0 blocks
+==95==    still reachable: 1,144 bytes in 2 blocks
+==95==         suppressed: 0 bytes in 0 blocks
+==95== 
+==95== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==95== 
+==95== 1 errors in context 1 of 1:
+==95== Invalid read of size 1
+==95==    at 0x109AE7: _strlen (in /home/runner/simpleshell/hsh)
+==95==    by 0x109D48: _which (in /home/runner/simpleshell/hsh)
+==95==    by 0x10938C: _fork (in /home/runner/simpleshell/hsh)
+==95==    by 0x109590: _loop (in /home/runner/simpleshell/hsh)
+==95==    by 0x1095F1: main (in /home/runner/simpleshell/hsh)
+==95==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==95== 
+==95== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+--94-- REDIR: 0x4ed3950 (libc.so.6:free) redirected to 0x4c30cd0 (free)
+==94== 
+==94== HEAP SUMMARY:
+==94==     in use at exit: 0 bytes in 0 blocks
+==94==   total heap usage: 4 allocs, 4 frees, 2,288 bytes allocated
+==94== 
+==94== All heap blocks were freed -- no leaks are possible
+==94== 
+==94== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==94== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
