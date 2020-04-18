@@ -12,8 +12,7 @@ int _loop(info_t *info)
 	{
 		signal(SIGINT, _signals);
 		_get_prompt(info);
-		if (info->line == NULL)
-			continue;
+
 
 		if (info->line[0] == '\n')
 		{

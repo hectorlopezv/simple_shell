@@ -33,10 +33,9 @@ int _fork(info_t *info)
 		{	pid = wait(&status);
 			if (pid < 0)
 				exit(EXIT_FAILURE);
-			if (WIFEXITED(status))
+			if (WIFEXITED(status) == 1)
 				info->error_status = WEXITSTATUS(status);
 
-			wait(NULL);
 			return (info->error_status);
 		}
 		else
