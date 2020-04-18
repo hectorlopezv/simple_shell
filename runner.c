@@ -34,8 +34,9 @@ int main (__attribute__((unused)) int ac, char **argv)
 				collection_string = NULL;
 			}
 
-			if(isatty(STDIN_FILENO) == 0)/* si es modo no it retorna ultimo commando del status del  hijo*/
+			if(isatty(STDIN_FILENO) == 0){/* si es modo no it retorna ultimo commando del status del  hijo*/
 				exit(status);
+			}
 			break;
 		}
 
@@ -336,7 +337,6 @@ int _stat(const char *filename)
 
 	if (stat(filename, &st) == 0 && (st.st_mode & S_IXUSR) && (S_ISREG(st.st_mode)))
 	{
-		/* printf("aqui bebe\n");*/
 		return (0);
 	}
 
