@@ -31,6 +31,9 @@ int _builtin(char *builtIn, char **buffer_line, char ***collection_string,
 
 	if (_strcmp(builtIn, "exit") == 0)
 	{
+		if ((*collection_string)[1] != NULL)
+			status = _atoi((*collection_string)[1]);
+
 		_free_2(collection_string, buffer_line);
 		exit(status);
 	}
