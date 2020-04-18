@@ -34,7 +34,7 @@ char *_which(char **collection_string)
 	path_mod = malloc(1), path_dup = malloc(1);
 	check_path = NULL;
 	size = _strlen(collection_string[0]);
-	path = _getenv("PATH");
+	path = _getenv("PATH=");
 	if (path != NULL)/* PATH= case empty*/
 	{
 		check_path = _check_empty_path(path, collection_string);
