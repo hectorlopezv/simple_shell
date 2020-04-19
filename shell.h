@@ -10,12 +10,22 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <limits.h>
+#include <errno.h>
+#include <string.h>
 
 #define TOKEN_DELIMITERS " \t\r\n\a :"
 extern char **environ;
 
-/*erros*/
 
+
+/*env.c*/
+
+int  _setenv (char *variable, char *value);
+int  _putenv (char * string);
+int  _unsetenv (char *string);
+
+
+/*erros*/
 int error_shell(int c_number, char **argv,
 		char **colection_string, int status);
 

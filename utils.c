@@ -67,6 +67,21 @@ int _builtin(char *builtIn, char **buffer_line, char ***collection_string,
 		_free_2(collection_string, buffer_line);
 		return (0);
 	}
+
+
+	if (_strcmp(builtIn, "setenv") == 0)
+	{
+		printf("esto es el collection \n");
+		if (collection_string[2] == NULL)
+			_setenv ((*collection_string)[0], "");
+		else
+		{
+			_setenv ((*collection_string)[1], (*collection_string)[2]);
+		}
+		_free_2(collection_string, buffer_line);
+		return (0);
+	}
+
 	return (-1);
 }
 
