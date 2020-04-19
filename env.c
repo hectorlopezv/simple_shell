@@ -26,6 +26,7 @@ int  _setenv (char *variable, char *value)
 	if (new_string == NULL)
 	{
 		errno = ENOMEM;
+		free(new_string);
 		return (-1);
 	}
 	_strcpy(new_string,variable);
@@ -73,6 +74,7 @@ int  _putenv (char * string)
 		last_environ = malloc ((contador + 2) * sizeof(char *));/* nuevo array, MALLOC*/
 		if (last_environ == NULL)
 		{
+			free(duplicate_out_equal), duplicate_out_equal = NULL;
 			errno = ENOMEM;
 			return (-1);
 		}
@@ -84,6 +86,7 @@ int  _putenv (char * string)
 				last_environ[i] = ft_strdup(string);/*caso que exista y se modifica*/
 				if (last_environ[i] == NULL)
 				{
+					free(duplicate_out_equal), duplicate_out_equal = NULL;
 					errno = ENOMEM;
 					return (-1);
 				}
