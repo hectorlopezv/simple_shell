@@ -46,7 +46,7 @@ char *_which(char **collection_string)
 			return (ft_strdup(check_path));/*malloc*/
 		}
 	}
-	if (strcmp(path, "PATH=") == 0)
+	if (_strcmp(path, "PATH=") == 0)
 	{
 		check_path = _check_empty_path(path, collection_string);
 		if (check_path != NULL)
