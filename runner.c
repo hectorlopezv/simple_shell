@@ -64,7 +64,7 @@ int main (__attribute__((unused)) int ac, char **argv)
 
 			if (path == NULL && path_slash == 0)
 			{
-				c_number_char = convert(c_number, 10);
+				c_number_char = _convert(c_number, 10);
 				write(STDERR_FILENO, argv[0], _strlen(argv[0]) );
 				write(STDERR_FILENO, ": ", 2);
 				write(STDERR_FILENO, c_number_char, _strlen(c_number_char));
@@ -501,7 +501,7 @@ int _builtin(char *builtIn,char *buffer_line, char **collection_string)
 	return (-1);
 }
 
-char *convert(long int num, int base)
+char *_convert(long int num, int base)
 {
 	static char *array;
 	static char buffer[50];
